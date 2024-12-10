@@ -12,19 +12,39 @@ function App() {
         { name: "David", amountOwing: 0 },
     ]);
 
+    // State to store the selected friend
+    const [selectedFriend, setSelectedFriend] = useState(null);
+
     // Function to handle adding a new friend
     const addFriend = (newFriend) => {
         setFriends((prevFriends) => [...prevFriends, newFriend]);
     };
 
+    const onSelectFriend = (friend) => {
+      setSelectedFriend(friend);
+    }
+
+    // Function to handle split Bill
+    const splitBill = (updatedFriend) => {
+        setFriends((prevFriends) => 
+          prevFriends.map((friend) =>
+            friend.name === updatedFriend.name ? updatedFriend : friend
+          )
+        );
+    };
+
     return (
         <div style={{ display: "flex", gap: 50 }}>
             <div className="leftColumn">
-                <ListFriends friends={friends} /> {/* Passing friends as prop */}
+                <ListFriends friends={friends} handleClick={onSelectFriend} /> {/* Passing friends as prop */}
                 <NewFriend onAddFriend={addFriend} /> {/* Passing addFriend as prop */}
             </div>
             <div className="rightColumn">
-                <BillData name="Bruno" />
+                {selectedFriend ? (
+                  <BillData name={selectedFriend.name} onSplitBill={splitBill}/>
+                ) :
+                ""
+                }
             </div>
         </div>
     );

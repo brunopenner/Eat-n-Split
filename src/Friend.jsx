@@ -1,7 +1,7 @@
 import placeholderImage from './assets/profile-placeholder.png';
 import './Friend.css';
 
-export default function Friend ({name, amountOwing, imageUrl}) {
+export default function Friend ({name, amountOwing, imageUrl, handleClick}) {
     
     const whoOwes = () => {
         if (amountOwing < 0) {
@@ -19,7 +19,7 @@ export default function Friend ({name, amountOwing, imageUrl}) {
                 <h3>{name}</h3>
                {whoOwes()}
             </div>
-            <button>Select</button>
+            <button onClick={() => handleClick({name, amountOwing, imageUrl})}>Select</button>
         </li>
     )
 }
