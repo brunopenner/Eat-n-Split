@@ -1,0 +1,25 @@
+.BillData {
+    background: wheat;
+    padding: 20px;
+}
+
+.BillData form {
+    text-align: right
+}
+
+.BillData form button{
+    width: 53%;
+}
+
+.BillData form .inputWrapper {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.BillData form .inputWrapper input,
+.BillData form .inputWrapper select {
+    width: 30%;
+    padding: 2px !important;
+    /* border: 1px solid black; */
+}
