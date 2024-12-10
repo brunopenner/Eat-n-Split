@@ -1,8 +1,7 @@
 import placeholderImage from './assets/profile-placeholder.png';
 import './Friend.css';
 
-export default function Friend ({name, amountOwing}) {
-    let isOwing = false;
+export default function Friend ({name, amountOwing, imageUrl}) {
     
     const whoOwes = () => {
         if (amountOwing < 0) {
@@ -15,7 +14,7 @@ export default function Friend ({name, amountOwing}) {
     }
     return (
         <li className="friendCard">
-            <img src={placeholderImage} alt="Profile picture"/>
+            <img src={imageUrl ? imageUrl : placeholderImage} alt="Profile picture"/>
             <div>
                 <h3>{name}</h3>
                {whoOwes()}

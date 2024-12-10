@@ -1,0 +1,5 @@
+[
+    { "name": "Bruno",  "amountOwing": 24 },
+    { "name": "Michael", "amountOwing": -7 },
+    { "name": "David" }
+]
