@@ -1,0 +1,23 @@
+.friendCard {
+    display: flex;
+    gap: 30px;
+    padding: 15px;
+    border-radius: 5px;
+    transition: .3s;
+}
+
+.friendCard:hover {
+    background: wheat;
+}
+
+.friendCard img {
+    max-width: 60px;
+}
+
+.friendCard h3 {
+    margin: 0;
+}
+
+.friendCard p {
+    margin: 0;
+}
