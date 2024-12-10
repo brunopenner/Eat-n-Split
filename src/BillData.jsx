@@ -5,13 +5,16 @@ export default function BillData ({name, onSplitBill}) {
     const [billValue, setBillValue] = useState(0);
     const [yourExpense, setYourExpense] = useState(0);
     const [friendExpense, setFriendExpense] = useState(0);
+    const [whoPays, setWhoPays] = useState("You");
 
     const handleSubmission = (e) => {
         e.preventDefault();
         console.log("Form submitted!!!!")
 
-        const amountOwing = friendExpense - billValue;
+        let amountOwing;
+        whoPays === "You" ? amountOwing = friendExpense - billValue : amountOwing = billValue - friendExpense;
         console.log("Amount owing: ", amountOwing)
+        console.log("who Pays the bill? ", whoPays)
         const updatedFriend = {name, amountOwing};
         onSplitBill(updatedFriend);
 
@@ -39,9 +42,9 @@ export default function BillData ({name, onSplitBill}) {
                 </div>
                 <div className="inputWrapper">
                     <label htmlFor="whoPays">🤑 Who is paying the bill?</label>
-                    <select name="whoPays" id="whoPays">
-                        <option>You</option>
-                        <option>{name}</option>
+                    <select name="whoPays" id="whoPays" onChange={(e) => setWhoPays(e.target.value)}>
+                        <option value="You">You</option>
+                        <option value="Friend">{name}</option>
                     </select>
                 </div>
                 <button type="submit">Split Bill</button>
